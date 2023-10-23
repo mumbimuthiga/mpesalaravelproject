@@ -30,6 +30,29 @@ class MPESAController extends Controller
         return $response->access_token;
 
     }
+    //STK Push
+    public function stkPush(Request $request){
+        $timestamp=date('YmdHis');
+        $password='174379'.'passkey'.$timestamp;
+
+        $curl_post_data=array(
+            "BusinessShortCode"=> "174379",    
+            "Password"=> "MTc0Mzc5YmZiMjc5ZjlhYTliZGJjZjE1OGU5N2RkNzFhNDY3Y2QyZTBjODkzMDU5YjEwZjc4ZTZiNzJhZGExZWQyYzkxOTIwMTYwMjE2MTY1NjI3",    
+            "Timestamp"=>$timestamp,    
+            "TransactionType"=> "CustomerPayBillOnline",    
+            "Amount"=>$request->amount,    
+            "PartyA"=>$request->phone,    
+            "PartyB"=>"174379",    
+            "PhoneNumber"=>$request->phone,    
+            "CallBackURL"=> "https://mydomain.com/pat",    
+            "AccountReference"=>$request->account,    
+            "TransactionDesc"=>$request->account
+        );
+        $url='https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest';
+        $response=$this->makeHttp($url,$curl_post_data);
+        return $response;
+    }
+
     //Register UrL
     public function registerURLS(){
         $body=array(

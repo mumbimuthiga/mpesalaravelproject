@@ -32,7 +32,7 @@
                             <input type="number" name="account" class="form-control" id="account">
                         </div>
                         <br>
-                        <button class="btn btn-primary">Simulate Payment</button>
+                        <button class="btn btn-primary" id="stkpush">Simulate Payment</button>
                     </form>
               
                 </div>
@@ -43,6 +43,29 @@
        </div>
     </div> 
    
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+        document.getElementById("stkpush").addEventListener('click',(event)=>{
+            event.preventDefault();
+
+            const requestBody={
+                amount:document.getElementById('amount').value,
+                phone:document.getElementById('phone').value,
+                account:document.getElementById('account').value
+
+            }
+            axios.post('/stkpush' ,requestBody)
+            .then((response)=>{
+                console.log(response.data)
+            })
+            .catch((error)=>{
+                console.log(error)
+            })
+
+        });
+    </script>
    
    
 

@@ -17,8 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::post('get-token',[MPESAController::class,'getAccessToken']);
 Route::get('stk', function () {
     return view('stk');
 });
+
+Route::post('get-token',[MPESAController::class,'getAccessToken']);
+
