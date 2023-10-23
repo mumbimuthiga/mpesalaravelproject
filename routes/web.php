@@ -19,3 +19,6 @@ Route::get('/', function () {
 });
 
 Route::post('get-token',[MPESAController::class,'getAccessToken']);
+Route::get('stk', function () {
+    return view('stk');
+});

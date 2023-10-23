@@ -30,6 +30,16 @@ class MPESAController extends Controller
         return $response->access_token;
 
     }
+    //Register UrL
+    public function registerURLS(){
+        $body=array(
+            'ShortCode'=>'',
+            'ResponseType'=>"Completed",
+            'ConfirmationURL'=>'https://mydomain.com/confirmation',
+            'ValidationURL'=>'https://mydomain.com/validation',
+
+        );
+    }
     //
     public function makeHttp($url,$body){
         $curl=curl_init();
